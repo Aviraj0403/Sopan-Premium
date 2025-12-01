@@ -1,109 +1,113 @@
-import { FlaskConical, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Heart, Mail, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
-  const quickLinks = [
-    "About Us",
-    "Our Services", 
-    "Health Packages",
-    "Home Collection",
-    "Download Reports",
-  ];
-
-  const services = [
-    "Pathology Tests",
-    "Radiology & Imaging",
-    "Preventive Health",
-    "Corporate Packages",
-    "Doctor Consultation",
-  ];
+  const scrollToSection = (sectionId: string) => {
+    const element = document.querySelector(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
-    <footer className="bg-foreground text-background py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8">
+    <footer className="bg-primary text-primary-foreground py-12">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <FlaskConical className="text-primary text-2xl" />
-              <div>
-                <h4 className="text-xl font-bold text-primary">MediLab Pro</h4>
-                <p className="text-sm text-background/70">Advanced Diagnostics</p>
-              </div>
+            <div className="flex items-center gap-2 mb-4">
+              <Heart className="w-6 h-6" fill="currentColor" />
+              <span className="font-bold text-lg">SOPAN FOUNDATION</span>
             </div>
-            <p className="text-background/70 mb-4">
-              Leading diagnostic laboratory providing accurate, reliable, and timely medical testing services.
+            <p className="text-primary-foreground/80 text-sm leading-relaxed">
+              A Registered Charitable Trust Dedicated to Special Needs Children
             </p>
-            <div className="flex space-x-3">
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center text-background hover:bg-primary transition-colors"
-                data-testid="footer-social-facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center text-background hover:bg-primary transition-colors"
-                data-testid="footer-social-instagram"
-              >
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a 
-                href="#" 
-                className="w-10 h-10 bg-background/10 rounded-lg flex items-center justify-center text-background hover:bg-primary transition-colors"
-                data-testid="footer-social-linkedin"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </div>
           </div>
 
           <div>
-            <h5 className="font-semibold text-lg mb-4">Quick Links</h5>
-            <ul className="space-y-2 text-background/70">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a href="#" className="hover:text-primary transition-colors" data-testid={`footer-quick-link-${index}`}>
-                    {link}
-                  </a>
-                </li>
-              ))}
+            <h3 className="font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  href="#about"
+                  onClick={(e) => { e.preventDefault(); scrollToSection("#about"); }}
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover-elevate inline-block"
+                  data-testid="link-footer-about"
+                >
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#services"
+                  onClick={(e) => { e.preventDefault(); scrollToSection("#services"); }}
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover-elevate inline-block"
+                  data-testid="link-footer-services"
+                >
+                  Services
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#team"
+                  onClick={(e) => { e.preventDefault(); scrollToSection("#team"); }}
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover-elevate inline-block"
+                  data-testid="link-footer-team"
+                >
+                  Our Team
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#get-involved"
+                  onClick={(e) => { e.preventDefault(); scrollToSection("#get-involved"); }}
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors hover-elevate inline-block"
+                  data-testid="link-footer-involved"
+                >
+                  Get Involved
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h5 className="font-semibold text-lg mb-4">Services</h5>
-            <ul className="space-y-2 text-background/70">
-              {services.map((service, index) => (
-                <li key={index}>
-                  <a href="#" className="hover:text-primary transition-colors" data-testid={`footer-service-link-${index}`}>
-                    {service}
-                  </a>
-                </li>
-              ))}
+            <h3 className="font-bold mb-4">Our Services</h3>
+            <ul className="space-y-2 text-sm text-primary-foreground/80">
+              <li>Special Education</li>
+              <li>Therapy & Rehabilitation</li>
+              <li>Vocational Training</li>
+              <li>Parental Support</li>
             </ul>
           </div>
 
           <div>
-            <h5 className="font-semibold text-lg mb-4">Contact Info</h5>
-            <div className="space-y-3 text-background/70">
-              <div className="flex items-center space-x-2">
-                <span className="text-primary">📍</span>
-                <span>123 Medical Complex, Health Street, Mumbai - 400001</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-primary">📞</span>
-                <span>+91 9876-543-210</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <span className="text-primary">✉️</span>
-                <span>info@medilabpro.com</span>
-              </div>
-            </div>
+            <h3 className="font-bold mb-4">Contact</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 opacity-80" />
+                <span className="text-primary-foreground/80">
+                  Nirshu Babu Memorial Hospital, NH-31, Begusarai, Bihar
+                </span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 opacity-80" />
+                <a href="mailto:contact@sopanfoundation.org" className="text-primary-foreground/80 hover:text-primary-foreground">
+                  contact@sopanfoundation.org
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone className="w-4 h-4 opacity-80" />
+                <span className="text-primary-foreground/80">+91-XXXXXXXXXX</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/70">
-          <p>&copy; 2024 MediLab Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+        <div className="border-t border-primary-foreground/20 pt-8 text-center">
+          <p className="text-sm text-primary-foreground/80 mb-2">
+            © 2025 SOPAN FOUNDATION. All rights reserved.
+          </p>
+          <p className="text-sm font-medium italic">
+            Empower • Educate • Include
+          </p>
         </div>
       </div>
     </footer>
